@@ -13,6 +13,7 @@ var wizardsCoats = ['rgb(101, 137, 164)',
 
 var wizardsEyes = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizards = [];
+var wizardsAmount = 4;
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
@@ -26,17 +27,17 @@ var getRandomFromArray = function (arr) {
   return Math.floor(Math.random() * arr.length);
 };
 
-var generateWizards = function (amount, names, surnames, coatColors, eyesColors) {
+var generateWizards = function (amount) {
   for (var i = 0; i < amount; i++) {
     var wizard = {};
-    var randomNameNumber = getRandomFromArray(names);
-    var randomSurnameNumber = getRandomFromArray(surnames);
-    var randomCoatNumber = getRandomFromArray(coatColors);
-    var randomEyesNumber = getRandomFromArray(eyesColors);
+    var randomNameNumber = getRandomFromArray(wizardsNames);
+    var randomSurnameNumber = getRandomFromArray(wizardsSurnames);
+    var randomCoatNumber = getRandomFromArray(wizardsCoats);
+    var randomEyesNumber = getRandomFromArray(wizardsEyes);
 
-    wizard.name = names[randomNameNumber] + ' ' + surnames[randomSurnameNumber];
-    wizard.coatColor = coatColors[randomCoatNumber];
-    wizard.eyesColor = eyesColors[randomEyesNumber];
+    wizard.name = wizardsNames[randomNameNumber] + ' ' + wizardsSurnames[randomSurnameNumber];
+    wizard.coatColor = wizardsCoats[randomCoatNumber];
+    wizard.eyesColor = wizardsEyes[randomEyesNumber];
 
     wizards.push(wizard);
   }
@@ -60,7 +61,7 @@ var getWizardsStack = function (frag, wizArr) {
   similarListElement.appendChild(frag);
 };
 
-generateWizards(4, wizardsNames, wizardsSurnames, wizardsCoats, wizardsEyes);
+generateWizards(wizardsAmount, wizardsNames, wizardsSurnames, wizardsCoats, wizardsEyes);
 
 getWizardsStack(fragment, wizards);
 
