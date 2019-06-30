@@ -12,6 +12,7 @@ var wizardsCoats = ['rgb(101, 137, 164)',
   'rgb(0, 0, 0)'];
 
 var wizardsEyes = ['black', 'red', 'blue', 'yellow', 'green'];
+var wizardBalls = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var wizards = [];
 var wizardsAmount = 4;
 
@@ -67,5 +68,87 @@ getWizardsStack(fragment, wizards);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-userDialog.classList.remove('hidden');
+// userDialog.classList.remove('hidden');
 
+// Появление и скрытие окна персонажа
+
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
+var userDialogOpen = document.querySelector('.setup-open');
+var userDialogClose = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
+var userWizardCoat = userDialog.querySelector('.setup-wizard .wizard-coat');
+var userWizardEyes = userDialog.querySelector('.setup-wizard .wizard-eyes');
+var userWizardBall = userDialog.querySelector('.setup-fireball-wrap');
+var coatColorStorage = userDialog.querySelector('input[name="coat-color"]');
+var eyesColorStorage = userDialog.querySelector('input[name="eyes-color"]');
+var ballColorStorage = userDialog.querySelector('input[name="fireball-color"]');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE && userNameInput.matches(':focus') === false) {
+    closePopup();
+  }
+};
+
+var onCloseEnterPress = function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE && userDialogClose.matches(':focus') === true) {
+    closePopup();
+  }
+};
+
+var onCoatClick = function () {
+  var newColor = getRandomFromArray(wizardsCoats);
+  userWizardCoat.style.fill = wizardsCoats[newColor];
+  coatColorStorage.value = wizardsCoats[newColor];
+};
+
+var onEyesClick = function () {
+  var newColor = getRandomFromArray(wizardsEyes);
+  userWizardEyes.style.fill = wizardsEyes[newColor];
+  eyesColorStorage.value = wizardsEyes[newColor];
+};
+
+var onBallClick = function () {
+  var newColor = getRandomFromArray(wizardBalls);
+  userWizardBall.style.backgroundColor = wizardBalls[newColor];
+  ballColorStorage.value = wizardBalls[newColor];
+};
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+  document.addEventListener('keydown', onCloseEnterPress);
+  userWizardCoat.addEventListener('click', onCoatClick);
+  userWizardEyes.addEventListener('click', onEyesClick);
+  userWizardBall.addEventListener('click', onBallClick);
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+  document.removeEventListener('keydown', onCloseEnterPress);
+  userWizardCoat.removeEventListener('click', onCoatClick);
+  userWizardEyes.removeEventListener('click', onEyesClick);
+  userWizardBall.removeEventListener('click', onBallClick);
+};
+
+userDialogOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+userDialogOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+userDialogClose.addEventListener('click', function () {
+  closePopup();
+});
+
+userDialogClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
