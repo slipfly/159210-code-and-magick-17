@@ -68,8 +68,6 @@ getWizardsStack(fragment, wizards);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-// userDialog.classList.remove('hidden');
-
 // Появление и скрытие окна персонажа
 
 var ESC_KEYCODE = 27;
@@ -86,13 +84,13 @@ var eyesColorStorage = userDialog.querySelector('input[name="eyes-color"]');
 var ballColorStorage = userDialog.querySelector('input[name="fireball-color"]');
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && userNameInput.matches(':focus') === false) {
+  if (evt.keyCode === ESC_KEYCODE && !evt.target.classList.contains('setup-user-name')) {
     closePopup();
   }
 };
 
 var onCloseEnterPress = function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE && userDialogClose.matches(':focus') === true) {
+  if (evt.keyCode === ENTER_KEYCODE && evt.target.classList.contains('setup-close')) {
     closePopup();
   }
 };
