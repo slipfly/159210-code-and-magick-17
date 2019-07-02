@@ -75,7 +75,6 @@ var ENTER_KEYCODE = 13;
 
 var userDialogOpen = document.querySelector('.setup-open');
 var userDialogClose = userDialog.querySelector('.setup-close');
-var userNameInput = userDialog.querySelector('.setup-user-name');
 var userWizardCoat = userDialog.querySelector('.setup-wizard .wizard-coat');
 var userWizardEyes = userDialog.querySelector('.setup-wizard .wizard-eyes');
 var userWizardBall = userDialog.querySelector('.setup-fireball-wrap');
