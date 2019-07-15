@@ -81,6 +81,10 @@ var userWizardBall = userDialog.querySelector('.setup-fireball-wrap');
 var coatColorStorage = userDialog.querySelector('input[name="coat-color"]');
 var eyesColorStorage = userDialog.querySelector('input[name="eyes-color"]');
 var ballColorStorage = userDialog.querySelector('input[name="fireball-color"]');
+var basicCoords = {
+  x: '50%',
+  y: '80px'
+};
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE && !evt.target.classList.contains('setup-user-name')) {
@@ -128,6 +132,8 @@ var closePopup = function () {
   userWizardCoat.removeEventListener('click', onCoatClick);
   userWizardEyes.removeEventListener('click', onEyesClick);
   userWizardBall.removeEventListener('click', onBallClick);
+  userDialog.style.top = basicCoords.y;
+  userDialog.style.left = basicCoords.x;
 };
 
 userDialogOpen.addEventListener('click', function () {
