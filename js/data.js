@@ -1,9 +1,9 @@
 'use strict';
 
 (function () {
-  window.data = {
-    fragment: document.createDocumentFragment(),
-    generateWizards: function (amount) {
+  var AMOUNT = 4;
+  var wizards = [];
+  var generateWizards = function (amount) {
       for (var i = 0; i < amount; i++) {
         var wizard = {};
         var randomNameNumber = window.util.getRandomFromArray(window.util.wizardsNames);
@@ -15,8 +15,11 @@
         wizard.coatColor = window.util.wizardsCoats[randomCoatNumber];
         wizard.eyesColor = window.util.wizardsEyes[randomEyesNumber];
 
-        window.util.wizards.push(wizard);
+        wizards.push(wizard);
       }
-    }
   };
+
+  generateWizards(AMOUNT);
+
+  window.data = wizards;
 })();

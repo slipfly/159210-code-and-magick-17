@@ -2,7 +2,7 @@
 
 (function () {
   var userDialog = document.querySelector('.setup');
-
+  var fragment = document.createDocumentFragment();
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
@@ -20,17 +20,15 @@
     return wizardElement;
   };
 
-  var getWizardsStack = function (frag, wizArr) {
-    for (var i = 0; i < wizArr.length; i++) {
-      frag.appendChild(renderWizard(wizArr[i]));
+  var getWizardsStack = function (frag) {
+    for (var i = 0; i < window.data.length; i++) {
+      frag.appendChild(renderWizard(window.data[i]));
     }
 
     similarListElement.appendChild(frag);
   };
 
-  window.data.generateWizards(window.util.wizardsAmount, window.util.wizardsNames, window.util.wizardsSurnames, window.util.wizardsCoats, window.util.wizardsEyes);
-
-  getWizardsStack(window.data.fragment, window.util.wizards);
+  getWizardsStack(fragment);
 
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
 })();
