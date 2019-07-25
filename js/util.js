@@ -11,6 +11,10 @@
       'rgb(56, 159, 117)',
       'rgb(215, 210, 55)',
       'rgb(0, 0, 0)'],
-    wizardsEyes: ['black', 'red', 'blue', 'yellow', 'green']
+    wizardsEyes: ['black', 'red', 'blue', 'yellow', 'green'],
+    wizardsNames: ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'],
+    wizardsSurnames: ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'],
+    wizards: [],
+    wizardsAmount: 4
   };
 })();
